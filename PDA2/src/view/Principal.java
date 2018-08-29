@@ -34,7 +34,7 @@ public class Principal {
 		
 		System.out.println("\nleemos el archivo creado");
 		
-		PDA nuevo = c.leerPDA("Ejemplo");
+		PDA nuevo = c.leerPDA(pda.getNombre());
 		System.out.println(nuevo.toString() + "\n" + pda.toString());
 		System.out.println(nuevo.toString().equals(pda.toString()));
 		ControlPDA con = new ControlPDA();

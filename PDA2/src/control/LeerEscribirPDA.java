@@ -105,13 +105,13 @@ public class LeerEscribirPDA {
 				long orden = (long) regla.get("orden");
 
 				JSONObject actual_ = (JSONObject) regla.get("estadoActual");
-				Estado actual = new Estado((String) actual_.get("estado"), (boolean) actual_.get("inicial"),
+				Estado actual = new Estado((String) actual_.get("nombre"), (boolean) actual_.get("inicial"),
 						(boolean) actual_.get("acept"));
-
+				
 				JSONObject siguiente_ = (JSONObject) regla.get("estadoSiguiente");
-				Estado siguiente = new Estado((String) siguiente_.get("estado"), (boolean) siguiente_.get("inicial"),
+				Estado siguiente = new Estado((String) siguiente_.get("nombre"), (boolean) siguiente_.get("inicial"),
 						(boolean) siguiente_.get("acept"));
-
+				
 				reg[i] = new Regla(actual, (String) regla.get("lectura"), (String) regla.get("pila"), siguiente,
 						(int) orden, (String) regla.get("apilar"));
 				System.out.println(reg[i].toString() + "..." + i);
