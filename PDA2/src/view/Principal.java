@@ -39,10 +39,12 @@ public class Principal {
 		System.out.println(nuevo.toString().equals(pda.toString()));
 		ControlPDA con = new ControlPDA();
 		System.out.println("recursividad:");
+		
 		//deberia aceptar
 		con.reiniciarPDA(pda);
 		System.out.println(con.simularAutomata(pda, "a", 0));
 		con.reiniciarPDA(pda);
+		
 		//deberia rechazar
 		System.out.println(con.simularAutomata(pda, "b", 0));
 		con.reiniciarPDA(pda);
