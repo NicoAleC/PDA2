@@ -10,7 +10,15 @@ import entity.Regla;
 public class Principal {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		java.awt.EventQueue.invokeLater(new Runnable() {
+	         public void run() {
+	        	/* PDA pda=new PDA();
+	        new FConjuntos(pda);*/
+	        	
+	        	 
+	        	new Menu();
+	         }});
+		/*// TODO Auto-generated method stub
 		Estado[] estados = new Estado[4];
 		estados[0] = new Estado("leer_a", true, false);
 		estados[1] = new Estado("leer_b", false, false);
@@ -47,7 +55,7 @@ public class Principal {
 		
 		//deberia rechazar
 		System.out.println(con.simularAutomata(pda, "b", 0));
-		con.reiniciarPDA(pda);
+		con.reiniciarPDA(pda);*/
 	}
 
 }

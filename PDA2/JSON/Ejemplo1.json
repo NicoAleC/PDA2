@@ -1,0 +1,1 @@
+{"actual":{"acept":false,"inicial":true,"nombre":"a"},"reglas":[{"estadoActual":{"acept":false,"inicial":true,"nombre":"a"},"apilar":"A","estadoSiguiente":{"acept":true,"inicial":false,"nombre":"b"},"pila":"A","orden":1,"lectura":"a"}],"pila":["Z0"],"nombre":"Ejemplo1","estados":[{"acept":false,"inicial":true,"nombre":"a"},{"acept":true,"inicial":false,"nombre":"b"}]}

@@ -2,35 +2,40 @@ package control;
 
 import java.util.ArrayList;
 
-import entity.Estado;
-import entity.PDA;
-import entity.Regla;
+import entity.*;
 
 public class ControlPDA {
 	
-
-	ArrayList estados;
-	ArrayList reglas;
-
+	public ArrayList<Estado> estados;
+	public ArrayList<Regla> reglas;
+	
 	public ControlPDA() {
-		estados = new ArrayList();
-		reglas = new ArrayList();
+		estados = new ArrayList<Estado>();
+		reglas = new ArrayList<Regla>();
 	}
-
+	
 	public void agregarPila(PDA pda, int regla) {
-		if (pda.getReglas()[regla].getOrden() > 0) {
+		if(pda.getReglas()[regla].getOrden() > 0) {
 			pda.getPila().add(pda.getReglas()[regla].getApilar());
-		}
+		} 
 	}
-
+	
 	public void crearEstados(PDA pda) {
-		pda.setEstados((Estado[]) estados.toArray());
+		
+		Estado [] stockArr = estados.toArray(new Estado[estados.size()]);
+		pda.setEstados(stockArr);
+		System.out.println(stockArr[0].getEstado());
+		//pda.setEstados((Estado[]) estados.toArray());
+		
 	}
-
+	
 	public void crearReglas(PDA pda) {
-		pda.setReglas((Regla[]) reglas.toArray());
+		Regla [] stockArr = reglas.toArray(new Regla[reglas.size()]);
+		pda.setReglas(stockArr);
+		System.out.println(stockArr[0].toString());
+		
+		//pda.setReglas((Regla[]) reglas.toArray());
 	}
-
 	public boolean simularAutomata(PDA pda, String letra, int cont) {
 		if (pda.getActual().isAcept()) {
 			return true;
@@ -55,6 +60,5 @@ public class ControlPDA {
 			}
 		}
 	}
-
 
 }
