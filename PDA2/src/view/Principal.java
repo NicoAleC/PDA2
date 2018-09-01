@@ -37,6 +37,8 @@ public class Principal {
 		PDA nuevo = c.leerPDA(pda.getNombre());
 		System.out.println(nuevo.toString() + "\n" + pda.toString());
 		System.out.println(nuevo.toString().equals(pda.toString()));
+		c.borrarPDA(pda.getNombre());
+		
 		ControlPDA con = new ControlPDA();
 		System.out.println("recursividad:");
 		
