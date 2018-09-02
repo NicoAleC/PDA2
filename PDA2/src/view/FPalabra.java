@@ -89,11 +89,11 @@ public class FPalabra extends JFrame {
 	    		
 	    		//deberia aceptar
 	    		con.reiniciarPDA(pda);
-	    		System.out.println(con.simularAutomata(pda, "a", 0));
+	    		System.out.println(con.simularAutomata(pda, "abc"));
 	    		con.reiniciarPDA(pda);
 	    		
 	    		//deberia rechazar
-	    		System.out.println(con.simularAutomata(pda, "b", 0));
+	    		System.out.println(con.simularAutomata(pda, "aabc"));
 	    		con.reiniciarPDA(pda);
 
 	        	  

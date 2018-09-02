@@ -80,11 +80,11 @@ public class PilaIU extends JFrame {
 		    		
 		    		//deberia aceptar
 		    		con.reiniciarPDA(pda);
-		    		System.out.println(con.simularAutomata(pda, "a", 0));
+		    		System.out.println(con.simularAutomata(pda, "abc"));
 		    		con.reiniciarPDA(pda);
 		    		
 		    		//deberia rechazar
-		    		System.out.println(con.simularAutomata(pda, "b", 0));
+		    		System.out.println(con.simularAutomata(pda, "b"));
 		    		con.reiniciarPDA(pda);
 		    		pilafunc= new EnPilas(pda.getPila());
 		    		

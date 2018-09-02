@@ -16,9 +16,9 @@ public class Principal {
 	        new FConjuntos(pda);*/
 	        	
 	        	 
-	        	new Menu();
+	        	//new Menu();
 	         }});
-		/*// TODO Auto-generated method stub
+		// TODO Auto-generated method stub
 		Estado[] estados = new Estado[4];
 		estados[0] = new Estado("leer_a", true, false);
 		estados[1] = new Estado("leer_b", false, false);
@@ -26,13 +26,13 @@ public class Principal {
 		estados[3] = new Estado("final", false, true);
 		
 		Regla[] reglas = new Regla[7];
-		reglas[0] = new Regla(estados[0], "a", "Z0", estados[3], 0, "");
-		reglas[1] = new Regla(estados[0], "a", "A", estados[0], -1, "");
-		reglas[2] = new Regla(estados[0], "a", "B", estados[1], 0, "");
+		reglas[0] = new Regla(estados[0], "a", "Z0", estados[0], 1, "A");
+		reglas[1] = new Regla(estados[0], "a", "A", estados[0], 1, "A");
+		reglas[2] = new Regla(estados[0], "b", "A", estados[1], -1, "");
 		reglas[3] = new Regla(estados[1], "b", "A", estados[1], -1, "");
 		reglas[4] = new Regla(estados[1], "c", "Z0", estados[2], 0, "");
-		reglas[5] = new Regla(estados[2], "a", "Z0", estados[2], 0, "");
-		reglas[6] = new Regla(estados[2], " ", "Z0", estados[3], 0, "");
+		reglas[5] = new Regla(estados[2], "c", "Z0", estados[2], 0, "");
+		reglas[6] = new Regla(estados[2], "-", "Z0", estados[3], 0, "");
 		
 		Pila pila = new Pila();
 
@@ -46,16 +46,18 @@ public class Principal {
 		System.out.println(nuevo.toString() + "\n" + pda.toString());
 		System.out.println(nuevo.toString().equals(pda.toString()));
 		ControlPDA con = new ControlPDA();
+		System.out.println("-----------------------------------------------------");
 		System.out.println("recursividad:");
+		System.out.println(pda.getPila().toString());
+		System.out.println(pda.getActual().toString());
 		
-		//deberia aceptar
-		con.reiniciarPDA(pda);
-		System.out.println(con.simularAutomata(pda, "a", 0));
-		con.reiniciarPDA(pda);
+		System.out.println("-------------------");
 		
-		//deberia rechazar
-		System.out.println(con.simularAutomata(pda, "b", 0));
-		con.reiniciarPDA(pda);*/
+		
+		System.out.println(con.simularAutomata(pda,"aaabbbccccc-"));
+		System.out.println(pda.getActual().toString());
+		System.out.println(pda.getPila().toString());
+		System.out.println("-------------------");
 	}
 
 }
