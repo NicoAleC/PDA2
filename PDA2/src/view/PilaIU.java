@@ -53,6 +53,7 @@ public class PilaIU extends JFrame {
 	private JButton simularButton = new JButton("Simular");
 	private JButton guardarButton = new JButton("Guardar");
 	private JButton editButton = new JButton("Edit");
+	private JButton volverMenuButton = new JButton("Menu Principal");
 	
 	Box box;
 	
@@ -123,6 +124,8 @@ public class PilaIU extends JFrame {
 		box1.add(simularButton);
 		box1.add(Box.createVerticalStrut(20));
 		box1.add(guardarButton);
+		box1.add(Box.createVerticalStrut(20));
+		box1.add(volverMenuButton);
 		box1.add(Box.createVerticalGlue());
 		box.add(box1);
 		box.add(Box.createHorizontalStrut(20));
@@ -279,6 +282,8 @@ public class PilaIU extends JFrame {
 					box1.add(simularButton);
 					box1.add(Box.createVerticalStrut(20));
 					box1.add(guardarButton);
+					box1.add(Box.createVerticalStrut(20));
+					box1.add(volverMenuButton);
 					box1.add(Box.createVerticalGlue());
 					box.add(box1);
 					box.add(Box.createHorizontalStrut(20));
@@ -449,6 +454,8 @@ public class PilaIU extends JFrame {
 					box1.add(simularButton);
 					box1.add(Box.createVerticalStrut(20));
 					box1.add(guardarButton);
+					box1.add(Box.createVerticalStrut(20));
+					box1.add(volverMenuButton);
 					box1.add(Box.createVerticalGlue());
 					box.add(box1);
 					box.add(Box.createHorizontalStrut(20));
@@ -473,6 +480,14 @@ public class PilaIU extends JFrame {
 
 			}
 		});
+					
+					volverMenuButton.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							 setVisible(false); 
+				        	  dispose();
+							new Menu();
+						}
+					});
 
 	}
 
