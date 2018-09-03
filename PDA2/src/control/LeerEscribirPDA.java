@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -143,6 +144,16 @@ public class LeerEscribirPDA {
 		} else {
 			System.out.println(nombre + ".json no pudo ser eliminado");
 		}
+	}
+	
+	public String[] listarPDA() {
+		File lista = new File("JSON");
+		String[] aux1 = lista.list();
+		String[] aux2 = new String[aux1.length];
+		for (int i = 0; i < aux1.length; i++) {
+			aux2[i] = aux1[i].substring(0, aux1[i].length() - 5);
+		}
+		return aux2;
 	}
 
 }

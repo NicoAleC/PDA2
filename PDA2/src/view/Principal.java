@@ -1,5 +1,7 @@
 package view;
 
+import java.util.Arrays;
+
 import control.ControlPDA;
 import control.LeerEscribirPDA;
 import entity.Estado;
@@ -37,6 +39,7 @@ public class Principal {
 
 		PDA pda = new PDA("Ejemplo", estados, pila, reglas);
 		LeerEscribirPDA c = new LeerEscribirPDA();
+		System.out.println(Arrays.deepToString(c.listarPDA()));
 		/*c.crearPDA(pda);
 		System.out.println("\nleemos el archivo creado");
 		
