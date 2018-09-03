@@ -112,6 +112,7 @@ public class FReglas extends JFrame {
 	        	
 	        	}
 	        	
+	        	
 	        	for(int i=0;i<pda.getEstados().length;i++) {
 		        	if(pda.getEstados()[i].getEstado().equals(part4)) {
 		        	//Regla regla= new Regla(control.estados.get(i),part2,part3,new Estado(part4, true, false),Integer.parseInt(part51),part52);

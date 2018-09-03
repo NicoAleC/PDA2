@@ -17,6 +17,7 @@ import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.Timer;
@@ -35,6 +36,7 @@ public class FConjuntos extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 	public JTextField conjunto;
+	public JTextField nombrepda;
 	private JCheckBox einicial= new JCheckBox();
 	private JCheckBox efinal= new JCheckBox();
 	 private JButton saveButton = new JButton("Save");
@@ -44,11 +46,14 @@ public class FConjuntos extends JFrame {
 	 ControlPDA control= new ControlPDA();
 	 PDA pda;
 	 Estado estado;
-	 
+	 JLabel inicial= new JLabel("Inicial"); 
+	 JLabel ffinal= new JLabel("Final"); 
 
 	   public FConjuntos(PDA pda) {
 		   this.pda=pda;
-		   pda.setNombre("Ejemplo1");
+		   
+		   System.out.println(pda.getNombre());
+		   
 		   Pila pila = new Pila();
 		   pda.setPila(pila);
 		   
@@ -101,8 +106,7 @@ public class FConjuntos extends JFrame {
 	        	  
 	          }
 	       });
-	      
-	      //addButton.addActionListener(  new UnCheckAllAction());
+	  
 	      
 	      
 	      conjunto.addMouseListener(new MouseAdapter() {
@@ -114,13 +118,16 @@ public class FConjuntos extends JFrame {
 	    	  }
 	    	});
 	      
+	      
 	     
 	      
 	      
 	      
 	      
 	      conjuntos.add(conjunto);
+	      conjuntos.add(inicial);
 	      conjuntos.add(einicial);
+	      conjuntos.add(ffinal);
 	      conjuntos.add(efinal);
 	      conjuntos.add(addButton);
 	      conjuntos.add(saveButton);

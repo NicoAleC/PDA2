@@ -65,7 +65,8 @@ public class FPalabra extends JFrame {
 	              }
 	        	  
 	        	  
-	        	
+	        	  LeerEscribirPDA c = new LeerEscribirPDA();
+	      		c.crearPDA(pda);
 	        	  
 	        	  System.out.println("imprimir estados pda");
 	        	  for(int j=0;j<pda.getEstados().length;j++) {
@@ -76,25 +77,7 @@ public class FPalabra extends JFrame {
 	        	  for(int j=0;j<pda.getReglas().length;j++) {
 	        	  System.out.println(pda.getReglas()[j]);
 	        	  }
-	      		LeerEscribirPDA c = new LeerEscribirPDA();
-	      		c.crearPDA(pda);
-	        	  
-	      		System.out.println("\nleemos el archivo creado");
-	    		
-	    		PDA nuevo = c.leerPDA(pda.getNombre());
-	    		System.out.println(nuevo.toString() + "\n" + pda.toString());
-	    		System.out.println(nuevo.toString().equals(pda.toString()));
-	    		ControlPDA con = new ControlPDA();
-	    		System.out.println("recursividad:");
-	    		
-	    		//deberia aceptar
-	    		con.reiniciarPDA(pda);
-	    		System.out.println(con.simularAutomata(pda, "a", 0));
-	    		con.reiniciarPDA(pda);
-	    		
-	    		//deberia rechazar
-	    		System.out.println(con.simularAutomata(pda, "b", 0));
-	    		con.reiniciarPDA(pda);
+	      		
 
 	        	  
 	        	  setVisible(false); 

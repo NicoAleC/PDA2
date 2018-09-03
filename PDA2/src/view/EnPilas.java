@@ -14,11 +14,11 @@ public class EnPilas extends JPanel {
 	int tamano;
 
 	Stack<EnPila> pilass= new Stack<EnPila>();
-	//Stack <EnPila>auxiliar=new Stack<EnPila>();
+	
 	Pila auxiliar;
 
 		public EnPilas(Pila pila) {
-			//this.tamano=tamano;
+			
 			auxiliar=pila;
 			tamano= pila.size();
 			setLayout(new GridLayout(tamano, 0));
@@ -72,7 +72,7 @@ public class EnPilas extends JPanel {
 		
 		public EnPila setpuntero(EnPila enpila) {
 			
-			if(enpila.puntero) {
+			if(enpila.puntero==true) {
 				enpila = new EnPila(true, enpila.pos,enpila.text+" <-");
 			}
 			//if (enpila.pos== pilas.size()-1) {
