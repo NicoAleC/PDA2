@@ -14,9 +14,8 @@ public class Principal {
 	         public void run() {
 	        	/* PDA pda=new PDA();
 	        new FConjuntos(pda);*/
-	        	
-	        	 
-	        	//new Menu();
+
+	        		new Menu();
 	         }});
 		// TODO Auto-generated method stub
 		Estado[] estados = new Estado[4];

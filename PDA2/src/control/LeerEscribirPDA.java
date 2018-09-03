@@ -1,5 +1,6 @@
 package control;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -123,6 +124,7 @@ public class LeerEscribirPDA {
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (org.json.simple.parser.ParseException e) {
@@ -132,6 +134,15 @@ public class LeerEscribirPDA {
 
 		System.out.println("Archivo JSON leído \nAutómata creado");
 		return aux;
+	}
+	
+	public void borrarPDA(String nombre) {
+		File json = new File("JSON\\" + nombre + ".json");
+		if(json.delete()) {
+			System.out.println("Archivo" + nombre + ".json eliminado");
+		} else {
+			System.out.println(nombre + ".json no pudo ser eliminado");
+		}
 	}
 
 }
