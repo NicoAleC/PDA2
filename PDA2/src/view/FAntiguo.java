@@ -41,7 +41,7 @@ public class FAntiguo extends JFrame{
 	        	  
 	        	 
 	  			PDA nuevo = c.leerPDA(nombre);
-	  			new PilaIU(nuevo);
+	  			new FPalabra(nuevo);
 	        	
 	        		 
 	        		

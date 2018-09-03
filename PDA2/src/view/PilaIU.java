@@ -149,35 +149,12 @@ public class PilaIU extends JFrame {
 		setVisible(true);
 		simularButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.out.println("simular apretado: " + palabras);
 				
-			
-			
-
-				System.out.println("imprimir estados pda");
-				for (int j = 0; j < pda.getEstados().length; j++) {
-					System.out.println(pda.getEstados()[j]);
-				}
-
-				System.out.println("imprimir reglas pda");
-				for (int j = 0; j < pda.getReglas().length; j++) {
-					System.out.println(pda.getReglas()[j]);
-				}
 				
-
-				System.out.println("\nleemos el archivo creado");
-
-				PDA nuevo = c.leerPDA(pda.getNombre());
-				System.out.println(nuevo.toString() + "\n" + pda.toString());
-				System.out.println(nuevo.toString().equals(pda.toString()));
 				ControlPDA con = new ControlPDA();
 				System.out.println("recursividad:");
-
-				con.reiniciarPDA(pda);
 				System.out.println(con.simularAutomata(pda, palabras));
-				con.reiniciarPDA(pda);
-
-				System.out.println(con.simularAutomata(pda, palabras));
-				con.reiniciarPDA(pda);
 
 				// deberia dibujar!
 				pilafunc = new EnPilas(pda.getPila());

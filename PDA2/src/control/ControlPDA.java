@@ -56,6 +56,7 @@ public class ControlPDA {
 			String a;
 			String newent;
 			
+			System.out.println("Tamaño de las reglas: "+pda.getReglas().length);
 			for (int i = 0; i < pda.getReglas().length; i++) {
 				String estadoinicial = pda.getReglas()[i].getEstadoActual().getEstado();
 				String entrada = pda.getReglas()[i].getLectura();
@@ -72,6 +73,8 @@ public class ControlPDA {
 						System.out.println("Mi nueva entrada es: "+newent);
 					}
 					if (entrada.equals(a)) {
+						System.out.println("Mi entrada coincidio y por eso entro");
+						System.out.println("El tope de mi pila es"+ (pda.getPila().elementAt((pda.getPila().size()-1))));
 						if (topedelapila == pda.getPila().elementAt((pda.getPila().size()-1))) {
 							System.out.println("entro al if porque el tope de la pila y mi regla coinciden");
 							pda.setActual(pda.getReglas()[i].getEstadoSiguiente());

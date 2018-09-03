@@ -18,7 +18,7 @@ public class Principal {
 	        		new Menu();
 	         }});
 		// TODO Auto-generated method stub
-		Estado[] estados = new Estado[4];
+		/*Estado[] estados = new Estado[4];
 		estados[0] = new Estado("leer_a", true, false);
 		estados[1] = new Estado("leer_b", false, false);
 		estados[2] = new Estado("leer_c", false, false);
@@ -37,11 +37,10 @@ public class Principal {
 
 		PDA pda = new PDA("Ejemplo", estados, pila, reglas);
 		LeerEscribirPDA c = new LeerEscribirPDA();
-		c.crearPDA(pda);
-		
+		/*c.crearPDA(pda);
 		System.out.println("\nleemos el archivo creado");
 		
-		PDA nuevo = c.leerPDA(pda.getNombre());
+		/*PDA nuevo = c.leerPDA(pda.getNombre());
 		System.out.println(nuevo.toString() + "\n" + pda.toString());
 		System.out.println(nuevo.toString().equals(pda.toString()));
 		ControlPDA con = new ControlPDA();
@@ -53,10 +52,10 @@ public class Principal {
 		System.out.println("-------------------");
 		
 		
-		System.out.println(con.simularAutomata(pda,"aaabbbccccc-"));
+		System.out.println(con.simularAutomata(pda,"aaabbbccccc"));
 		System.out.println(pda.getActual().toString());
 		System.out.println(pda.getPila().toString());
-		System.out.println("-------------------");
+		System.out.println("-------------------");*/
 	}
 
 }
