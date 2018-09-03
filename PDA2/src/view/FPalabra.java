@@ -35,6 +35,7 @@ public class FPalabra extends JFrame {
 	 private JButton simularButton = new JButton("Simulador");
 	 
 	PDA pda;
+	String palabras;
 	 
 
 	   public FPalabra(PDA pda) {
@@ -51,18 +52,7 @@ public class FPalabra extends JFrame {
 	      
 	      simularButton.addActionListener(new ActionListener() {
 	          public void actionPerformed(ActionEvent e) {
-	        	  char[] charpalabra= palabra.getText().toCharArray();
-	     	   
-	        	  String[] stringarr = new String[charpalabra.length]; 
-	        	  int i=0;
-	        	  for (char d : charpalabra) {
-
-	                  stringarr[i]=Character.toString(d);
-	                  i++;
-	              }
-	        	  for (String string : stringarr) {
-	                  System.out.println(string);
-	              }
+	        	 palabras=palabra.getText();
 	        	  
 	        	  
 	        	  LeerEscribirPDA c = new LeerEscribirPDA();
@@ -82,7 +72,7 @@ public class FPalabra extends JFrame {
 	        	  
 	        	  setVisible(false); 
 	        	  dispose();
-	        	  new PilaIU(pda);
+	        	  new PilaIU(pda,palabras);
 	          }
 	       });
 	    

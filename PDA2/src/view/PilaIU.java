@@ -56,10 +56,13 @@ public class PilaIU extends JFrame {
 	private JButton volverMenuButton = new JButton("Menu Principal");
 	
 	Box box;
+	String palabras;
 	
-	public PilaIU(PDA pda) {
+
+	public PilaIU(PDA pda, String palabras) {
+
 		this.pda = pda;
-		
+		this.palabras=palabras;
 		
 		
 		preglas = new JPanel();
@@ -170,10 +173,10 @@ public class PilaIU extends JFrame {
 				System.out.println("recursividad:");
 
 				con.reiniciarPDA(pda);
-				System.out.println(con.simularAutomata(pda, "a", 0));
+				System.out.println(con.simularAutomata(pda, palabras));
 				con.reiniciarPDA(pda);
 
-				System.out.println(con.simularAutomata(pda, "b", 0));
+				System.out.println(con.simularAutomata(pda, palabras));
 				con.reiniciarPDA(pda);
 
 				// deberia dibujar!
