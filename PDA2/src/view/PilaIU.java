@@ -57,7 +57,6 @@ public class PilaIU extends JFrame {
 	
 	Box box;
 	
-
 	public PilaIU(PDA pda) {
 		this.pda = pda;
 		

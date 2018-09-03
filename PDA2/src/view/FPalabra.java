@@ -77,7 +77,7 @@ public class FPalabra extends JFrame {
 	        	  for(int j=0;j<pda.getReglas().length;j++) {
 	        	  System.out.println(pda.getReglas()[j]);
 	        	  }
-	      		
+
 
 	        	  
 	        	  setVisible(false); 
