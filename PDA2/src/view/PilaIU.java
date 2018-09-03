@@ -154,6 +154,7 @@ public class PilaIU extends JFrame {
 				
 				ControlPDA con = new ControlPDA();
 				System.out.println("recursividad:");
+				con.reiniciarPDA(pda);
 				System.out.println(con.simularAutomata(pda, palabras));
 
 				// deberia dibujar!
