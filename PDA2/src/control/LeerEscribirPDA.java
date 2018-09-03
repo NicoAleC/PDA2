@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -15,7 +16,7 @@ import entity.*;
 public class LeerEscribirPDA {
 
 	public void crearPDA(PDA pda) {
-		System.out.println("Escribiendo archivo JSON");
+		//System.out.println("Escribiendo archivo JSON");
 		JSONObject obj = new JSONObject();
 		obj.put("nombre", pda.getNombre());
 		obj.put("actual", this.crearEstado(pda.getActual()));
@@ -34,7 +35,7 @@ public class LeerEscribirPDA {
 			System.out.println(pda.getReglas()[i].toString());
 		}
 		obj.put("reglas", reglas);
-		System.out.println("tamaño de reglas vector: " + pda.getReglas().length);
+		//System.out.println("tamaño de reglas vector: " + pda.getReglas().length);
 
 		try {
 
@@ -47,7 +48,7 @@ public class LeerEscribirPDA {
 			e.printStackTrace();
 		}
 
-		System.out.print(obj + "\nTerminada la escritura del archivo JSON");
+		//System.out.print(obj + "\nTerminada la escritura del archivo JSON");
 
 	}
 
@@ -76,7 +77,7 @@ public class LeerEscribirPDA {
 
 	public PDA leerPDA(String nombre) {
 
-		System.out.println("Leyendo archivo JSON");
+		//System.out.println("Leyendo archivo JSON");
 		PDA aux = new PDA();
 		JSONParser jsonParser = new JSONParser();
 
@@ -115,15 +116,16 @@ public class LeerEscribirPDA {
 				
 				reg[i] = new Regla(actual, (String) regla.get("lectura"), (String) regla.get("pila"), siguiente,
 						(int) orden, (String) regla.get("apilar"));
-				System.out.println(reg[i].toString() + "..." + i);
+				//System.out.println(reg[i].toString() + "..." + i);
 			}
 
-			System.out.println("tamaño de reglas json: " + reglas.size());
+			//System.out.println("tamaño de reglas json: " + reglas.size());
 
 			aux = new PDA((String) pda.get("nombre"), est, new Pila(), reg);
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (org.json.simple.parser.ParseException e) {
@@ -131,7 +133,7 @@ public class LeerEscribirPDA {
 			e.printStackTrace();
 		}
 
-		System.out.println("Archivo JSON leído \nAutómata creado");
+		//System.out.println("Archivo JSON leído \nAutómata creado");
 		return aux;
 	}
 	
@@ -142,6 +144,16 @@ public class LeerEscribirPDA {
 		} else {
 			System.out.println(nombre + ".json no pudo ser eliminado");
 		}
+	}
+	
+	public String[] listarPDA() {
+		File lista = new File("JSON");
+		String[] aux1 = lista.list();
+		String[] aux2 = new String[aux1.length];
+		for (int i = 0; i < aux1.length; i++) {
+			aux2[i] = aux1[i].substring(0, aux1[i].length() - 5);
+		}
+		return aux2;
 	}
 
 }
