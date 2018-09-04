@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Component;
 
 import java.awt.Dimension;
@@ -51,6 +52,15 @@ public class FConjuntos extends JFrame {
 
 	public FConjuntos(PDA pda) {
 		this.pda = pda;
+		
+		
+		saveButton.setBackground(new Color(255,102,102));
+		saveButton.setContentAreaFilled(false);
+		saveButton.setOpaque(true);
+		
+		addButton.setBackground(new Color(255,102,102));
+		addButton.setContentAreaFilled(false);
+		addButton.setOpaque(true);
 
 		System.out.println(pda.getNombre());
 
@@ -113,12 +123,11 @@ public class FConjuntos extends JFrame {
 			}
 		});
 
-		/*
-		 * conjunto.addMouseListener(new MouseAdapter() {
-		 * 
-		 * @Override public void mouseClicked(MouseEvent e) { conjunto.setText("");
-		 * einicial.setSelected(false); efinal.setSelected(false); } });
-		 */
+		conjunto.addMouseListener(new MouseAdapter() {
+		  
+		  @Override public void mouseClicked(MouseEvent e) { conjunto.setText("");
+		  einicial.setSelected(false); efinal.setSelected(false); } });
+		 
 
 		conjuntos.add(conjunto);
 		conjuntos.add(inicial);
