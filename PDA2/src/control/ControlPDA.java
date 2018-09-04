@@ -34,16 +34,12 @@ public class ControlPDA {
 		Estado [] stockArr = estados.toArray(new Estado[estados.size()]);
 		pda.setEstados(stockArr);
 		System.out.println(stockArr[0].getEstado());
-		//pda.setEstados((Estado[]) estados.toArray());
-		
 	}
 	
 	public void crearReglas(PDA pda) {
 		Regla [] stockArr = reglas.toArray(new Regla[reglas.size()]);
 		pda.setReglas(stockArr);
 		System.out.println(stockArr[0].toString());
-		
-		//pda.setReglas((Regla[]) reglas.toArray());
 	}
 	public boolean simularAutomata(PDA pda, String letra, boolean tieneFinal) {
 		String a;
@@ -109,7 +105,6 @@ public class ControlPDA {
 		}
 	
 	public void reiniciarPDA(PDA pda) {
-		pda.setLectura("");
 		for (int i = 0; i < pda.getEstados().length; i++) {
 			if(pda.getEstados()[i].isInicial()) {
 				pda.setActual(pda.getEstados()[i]);

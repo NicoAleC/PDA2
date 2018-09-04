@@ -28,15 +28,12 @@ public class FReglas extends JFrame {
 	public JTextField reglatext;
 	private JButton saveButton = new JButton("Save");
 	private JButton addButton = new JButton("Add");
-	ControlPDA control = new ControlPDA();
-	Estado estadoactual;
-	Estado estadosiguiente;
-	Regla regla;
-
-	PDA pda;
+	private ControlPDA control = new ControlPDA();
+	private Estado estadoactual;
+	private Estado estadosiguiente;
+	private Regla regla;
 
 	public FReglas(PDA pda) {
-		this.pda = pda;
 		JPanel reglas = new JPanel();
 		reglatext = new JTextField("Ingrese reglas");
 		reglatext.setFont(new Font("Serif", Font.BOLD, 20));

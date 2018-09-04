@@ -8,8 +8,6 @@ public class PDA {
 	
 
 	private String nombre;
-	private String lectura;
-	private int puntero;
 	private Estado actual;
 	private Estado[] estados;
 	private Pila pila;
@@ -18,8 +16,6 @@ public class PDA {
 
 	public PDA() {
 		this.nombre = "";
-		this.lectura = "";
-		this.puntero = 0;
 		this.actual = new Estado();
 		this.estados = new Estado[0];
 		this.pila = new Pila();
@@ -28,8 +24,6 @@ public class PDA {
 
 	public PDA(String nombre, Estado[] estados, Pila pila, Regla[] reglas) {
 		this.nombre = nombre;
-		this.lectura = "";
-		this.puntero = 0;
 		if (estados[0].isInicial()) {
 			this.actual = estados[0];
 		}
@@ -72,22 +66,6 @@ public class PDA {
 
 	public void setReglas(Regla[] reglas) {
 		this.reglas = reglas;
-	}
-
-	public String getLectura() {
-		return lectura;
-	}
-
-	public void setLectura(String lectura) {
-		this.lectura = lectura;
-	}
-
-	public int getPuntero() {
-		return puntero;
-	}
-
-	public void setPuntero(int puntero) {
-		this.puntero = puntero;
 	}
 
 	public void setNombre(String nombre) {
