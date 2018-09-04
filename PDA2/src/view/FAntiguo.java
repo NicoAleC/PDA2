@@ -29,14 +29,13 @@ public class FAntiguo extends JFrame {
 
 	private String nombre;
 
-
 	public FAntiguo() {
 		this.nombre = "";
 		this.setTitle("Escoger un PDA");
 		JComboBox<String> buscar;
 		JButton buscarButton = new JButton("Seleccionar");
-		
-		buscarButton.setBackground(new Color(0,153,0));
+
+		buscarButton.setBackground(new Color(0, 153, 0));
 		buscarButton.setContentAreaFilled(false);
 		buscarButton.setOpaque(true);
 		JLabel label1 = new JLabel("BUSCAR AUTOMATA");
@@ -44,16 +43,16 @@ public class FAntiguo extends JFrame {
 		JPanel antiguos = new JPanel();
 		JPanel buscarpanel = new JPanel();
 		JPanel botones = new JPanel();
-		JPanel labels=new JPanel();
+		JPanel labels = new JPanel();
 		antiguos.setPreferredSize(new Dimension(400, 200));
 		antiguos.setLayout(new BoxLayout(antiguos, BoxLayout.PAGE_AXIS));
-		antiguos.setBackground(new Color(255,255,204));
-		buscarpanel.setBackground(new Color(255,255,204));
-	    botones.setBackground(new Color(255,255,204));
-	    labels.setBackground(new Color(255,255,204));
-		
-	    labels.setLayout(new GridLayout(2,0));
-		
+		antiguos.setBackground(new Color(255, 255, 204));
+		buscarpanel.setBackground(new Color(255, 255, 204));
+		botones.setBackground(new Color(255, 255, 204));
+		labels.setBackground(new Color(255, 255, 204));
+
+		labels.setLayout(new GridLayout(2, 0));
+
 		buscar = new JComboBox<String>();
 		buscar.setFont(new Font("Serif", Font.BOLD, 30));
 
@@ -64,7 +63,7 @@ public class FAntiguo extends JFrame {
 		for (int i = 0; i < aux.length; i++) {
 			buscar.addItem(aux[i]);
 		}
-		
+
 		buscar.addItemListener(new ItemListener() {
 
 			@Override
@@ -75,7 +74,7 @@ public class FAntiguo extends JFrame {
 				nombre = nomb.getSelectedItem().toString();
 				buscarButton.setEnabled(true);
 			}
-			
+
 		});
 
 		buscarButton.addActionListener(new ActionListener() {
@@ -95,10 +94,10 @@ public class FAntiguo extends JFrame {
 		buscar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//buscar.setText("");
+				// buscar.setText("");
 
 			}
-		});		
+		});
 		buscarpanel.add(buscar);
 		botones.add(buscarButton);
 		labels.add(label1);

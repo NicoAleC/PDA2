@@ -1,10 +1,7 @@
 package view;
-import java.awt.Color;
 import java.awt.Dimension;
 
 
-
-import java.awt.Dimension;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -42,11 +39,11 @@ public class FReglas extends JFrame {
 	private Regla regla;
 	private JLabel verificacion = new JLabel("Regla Añadida Correctamente");
 	private JLabel titulo = new JLabel("AÑADE LAS REGLAS");
-	ImageIcon in=new ImageIcon("resource\\check.png");
-	JPanel verificador = new JPanel();
-	JLabel lin = new JLabel(in);
-	JPanel titulos = new JPanel();
-	JPanel mainBox = new JPanel();
+	public ImageIcon in=new ImageIcon("resource\\check.png");
+	public JPanel verificador = new JPanel();
+	public JLabel lin = new JLabel(in);
+	public JPanel titulos = new JPanel();
+	public JPanel mainBox = new JPanel();
 	
 
 	public FReglas(PDA pda) {

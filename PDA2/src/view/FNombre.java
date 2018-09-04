@@ -37,16 +37,12 @@ public class FNombre extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private JTextField nombrepda;
-	PDA pda;
 
 	public FNombre(PDA pda) {
-		this.pda = pda;
 		
 
 		JButton saveButton = new JButton("Guardar");
 		JLabel titulo = new JLabel("INGRESE UN NOMBRE");
-		ControlPDA control = new ControlPDA();
-		
 		saveButton.setBackground(new Color(255,102,102));
 		saveButton.setContentAreaFilled(false);
 		saveButton.setOpaque(true);

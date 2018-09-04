@@ -51,8 +51,6 @@ public class FConjuntos extends JFrame {
 	
 	public boolean eeinicial = false;
 	public boolean eefinal = false;
-	ControlPDA control = new ControlPDA();
-	private PDA pda;
 	private Estado estado;
 	
 	
@@ -60,7 +58,8 @@ public class FConjuntos extends JFrame {
 	JLabel lin = new JLabel(in);
 
 	public FConjuntos(PDA pda) {
-		this.pda = pda;
+
+		ControlPDA control = new ControlPDA();
 		JLabel inicial = new JLabel("Es un Estado Inicial");
 		JLabel ffinal = new JLabel("Es un Estado Final");
 		JLabel verificacion = new JLabel("Estado Añadido Correctamente");

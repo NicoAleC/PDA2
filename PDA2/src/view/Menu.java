@@ -40,25 +40,23 @@ public class Menu extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	private JButton nuevoButton= new JButton("Nuevo Automata");
+	private JButton nuevoButton = new JButton("Nuevo Automata");
 	private JButton antiguoButton = new JButton("Antiguo Automata");
 	private JButton instruccionesButton = new JButton("Instrucciones");
 
-	ControlPDA control = new ControlPDA();
-    PDA pda;
-	Estado estado;
+	private PDA pda;
 
 	public Menu() {
-		
-		nuevoButton.setBackground(new Color(255,102,102));
+
+		nuevoButton.setBackground(new Color(255, 102, 102));
 		nuevoButton.setContentAreaFilled(false);
 		nuevoButton.setOpaque(true);
-		
-		antiguoButton.setBackground(new Color(0,153,0));
+
+		antiguoButton.setBackground(new Color(0, 153, 0));
 		antiguoButton.setContentAreaFilled(false);
 		antiguoButton.setOpaque(true);
-		
-		instruccionesButton.setBackground(new Color(90,0,204));
+
+		instruccionesButton.setBackground(new Color(90, 0, 204));
 		instruccionesButton.setContentAreaFilled(false);
 		instruccionesButton.setOpaque(true);
 
@@ -68,27 +66,25 @@ public class Menu extends JFrame {
 		JPanel menu = new JPanel();
 		menu.setLayout(new BoxLayout(menu, BoxLayout.PAGE_AXIS));
 		JPanel botones = new JPanel();
-		
+
 		JPanel titulo = new JPanel();
 		JPanel labels = new JPanel();
 		JLabel label = new JLabel("BIENVENIDO");
-		
-		
-		botones.setBackground(new Color(255,255,204));
-		titulo.setBackground(new Color(255,255,204));
-		labels.setBackground(new Color(255,255,204));
-		
+
+		botones.setBackground(new Color(255, 255, 204));
+		titulo.setBackground(new Color(255, 255, 204));
+		labels.setBackground(new Color(255, 255, 204));
+
 		menu.setFont(new Font("Serif", Font.BOLD, 20));
 		menu.setPreferredSize(new Dimension(400, 200));
-		
-	
-		ImageIcon in=new ImageIcon("resource\\new-icon1.png"); 
-		ImageIcon io=new ImageIcon("resource\\old1.png"); 
-		ImageIcon ii=new ImageIcon("resource\\ins1.png"); 
-        
-        JLabel lnew =new JLabel(in); 
-        JLabel lold =new JLabel(io); 
-        JLabel lins =new JLabel(ii); 
+
+		ImageIcon in = new ImageIcon("resource\\new-icon1.png");
+		ImageIcon io = new ImageIcon("resource\\old1.png");
+		ImageIcon ii = new ImageIcon("resource\\ins1.png");
+
+		JLabel lnew = new JLabel(in);
+		JLabel lold = new JLabel(io);
+		JLabel lins = new JLabel(ii);
 
 		nuevoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -108,23 +104,19 @@ public class Menu extends JFrame {
 		});
 		instruccionesButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//menu no se cierra?
+				// menu no se cierra?
 				new FInstrucciones();
 			}
 		});
-		
-
-		
 
 		titulo.add(label);
-		
+
 		botones.add(nuevoButton);
 		botones.add(antiguoButton);
 		botones.add(instruccionesButton);
-		/*labels.add(lnew);
-		labels.add(lold);
-		labels.add(lins);
-		*/
+		/*
+		 * labels.add(lnew); labels.add(lold); labels.add(lins);
+		 */
 		Box box1 = Box.createHorizontalBox();
 		box1.add(Box.createHorizontalGlue());
 		box1.add(lnew);
@@ -133,17 +125,14 @@ public class Menu extends JFrame {
 		box1.add(Box.createHorizontalStrut(70));
 		box1.add(lins);
 		box1.add(Box.createHorizontalGlue());
-		
+
 		labels.add(box1);
 		menu.add(titulo);
 		menu.add(labels);
 		menu.add(botones);
-		
 
-
-		
 		getContentPane().add(menu);
-		//getContentPane().setBackground(Color.YELLOW); 
+		// getContentPane().setBackground(Color.YELLOW);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pack();
