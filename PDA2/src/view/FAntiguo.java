@@ -25,12 +25,12 @@ import entity.Pila;
 
 public class FAntiguo extends JFrame {
 
-	String nombre;
-	private JLabel titulo = new JLabel("Seleccione el automata a recuperar");
+	private String nombre;
 	private JComboBox<String> buscar;
 	private JButton buscarButton = new JButton("Seleccionar");
 
 	public FAntiguo() {
+		this.nombre = "";
 		this.setTitle("Escoger un PDA");
 		JPanel antiguos = new JPanel();
 		JPanel buscarpanel = new JPanel();
@@ -40,6 +40,7 @@ public class FAntiguo extends JFrame {
 		buscar = new JComboBox<String>();
 		buscar.setFont(new Font("Serif", Font.BOLD, 30));
 		buscar.setPreferredSize(new Dimension(275, 50));
+		buscarButton.setEnabled(false);
 		LeerEscribirPDA c = new LeerEscribirPDA();
 		String[] aux = c.listarPDA();
 		for (int i = 0; i < aux.length; i++) {
@@ -54,6 +55,7 @@ public class FAntiguo extends JFrame {
 				JComboBox<String> nomb = (JComboBox<String>) ie.getSource();
 				System.out.println(nomb.getSelectedItem().toString());
 				nombre = nomb.getSelectedItem().toString();
+				buscarButton.setEnabled(true);
 			}
 			
 		});
