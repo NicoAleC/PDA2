@@ -42,6 +42,7 @@ public class FReglas extends JFrame {
 		reglatext = new JTextField("Ingrese reglas");
 		reglatext.setFont(new Font("Serif", Font.BOLD, 20));
 		reglatext.setPreferredSize(new Dimension(300, 50));
+		saveButton.setEnabled(false);
 
 		reglatext.addMouseListener(new MouseAdapter() {
 			@Override
@@ -120,6 +121,7 @@ public class FReglas extends JFrame {
 					System.out.println(regla.getEstadoSiguiente().toString());
 
 					control.reglas.add(regla);
+					saveButton.setEnabled(true);
 				} catch (Exception e2) {
 					reglatext.setText("vuelva a ingresar la regla");
 				}
