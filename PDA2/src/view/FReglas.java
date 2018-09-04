@@ -1,4 +1,5 @@
 package view;
+import java.awt.Color;
 import java.awt.Dimension;
 
 
@@ -46,6 +47,13 @@ public class FReglas extends JFrame {
 	      reglatext.setFont(new Font("Serif", Font.BOLD, 20));
 	      reglatext.setPreferredSize(new Dimension(300, 50));
 	      
+	      saveButton.setBackground(new Color(255,102,102));
+			saveButton.setContentAreaFilled(false);
+			saveButton.setOpaque(true);
+			
+			addButton.setBackground(new Color(255,102,102));
+			addButton.setContentAreaFilled(false);
+			addButton.setOpaque(true);
 	      
 	      reglatext.addMouseListener(new MouseAdapter() {
 	    	  @Override
@@ -60,7 +68,7 @@ public class FReglas extends JFrame {
 	            
 	        	  setVisible(false); 
 	        	  dispose();
-	        	 new FPalabra(pda);
+	        	 new PilaIU(pda);
 	          }
 	       });
 	      

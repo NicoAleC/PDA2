@@ -1,7 +1,9 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -31,15 +33,30 @@ public class FAntiguo extends JFrame {
 	private JButton buscarButton = new JButton("Seleccionar");
 
 	public FAntiguo() {
+		
 		this.setTitle("Escoger un PDA");
+		
+		buscarButton.setBackground(new Color(0,153,0));
+		buscarButton.setContentAreaFilled(false);
+		buscarButton.setOpaque(true);
+		JLabel label1 = new JLabel("BUSCAR AUTOMATA");
+		JLabel label2 = new JLabel("Selecciona automata:");
 		JPanel antiguos = new JPanel();
 		JPanel buscarpanel = new JPanel();
 		JPanel botones = new JPanel();
-		antiguos.setPreferredSize(new Dimension(300, 100));
+		JPanel labels=new JPanel();
+		antiguos.setPreferredSize(new Dimension(400, 200));
 		antiguos.setLayout(new BoxLayout(antiguos, BoxLayout.PAGE_AXIS));
+		antiguos.setBackground(new Color(255,255,204));
+		buscarpanel.setBackground(new Color(255,255,204));
+	    botones.setBackground(new Color(255,255,204));
+	    labels.setBackground(new Color(255,255,204));
+		
+	    labels.setLayout(new GridLayout(2,0));
+		
 		buscar = new JComboBox<String>();
 		buscar.setFont(new Font("Serif", Font.BOLD, 30));
-		buscar.setPreferredSize(new Dimension(275, 50));
+		buscar.setPreferredSize(new Dimension(200, 30));
 		LeerEscribirPDA c = new LeerEscribirPDA();
 		String[] aux = c.listarPDA();
 		for (int i = 0; i < aux.length; i++) {
@@ -81,6 +98,9 @@ public class FAntiguo extends JFrame {
 		});		
 		buscarpanel.add(buscar);
 		botones.add(buscarButton);
+		labels.add(label1);
+		labels.add(label2);
+		antiguos.add(labels);
 		antiguos.add(buscarpanel);
 		antiguos.add(botones);
 

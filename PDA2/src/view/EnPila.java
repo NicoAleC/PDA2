@@ -8,12 +8,12 @@ import javax.swing.border.LineBorder;
 
 public class EnPila extends JPanel {
 		boolean puntero=false;
-		int pos;
+		
 		String text;
 
-		public EnPila(boolean  puntero, int pos,String text) {
+		public EnPila(boolean  puntero, String text) {
 			this.puntero=puntero;
-			this.pos=pos;
+			
 			this.text=text;
 			JLabel label= new JLabel (text);
 			add(label);

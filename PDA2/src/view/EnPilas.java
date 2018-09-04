@@ -7,40 +7,65 @@ import java.util.Stack;
 import javax.swing.JPanel;
 
 import entity.Pila;
+import entity.Regla;
 
 
 
 public class EnPilas extends JPanel {
-	int tamano;
 
-	Stack<EnPila> pilass= new Stack<EnPila>();
+
+	String pilass;
+	Stack<String> stack;
 	
-	Pila auxiliar;
+	
 
-		public EnPilas(Pila pila) {
+		public EnPilas(String pilass) {
+			this.pilass=pilass;
 			
-			auxiliar=pila;
-			tamano= pila.size();
-			setLayout(new GridLayout(tamano, 0));
+			String dividido=pilass.substring(1, pilass.length()-1);
+			  stack = new Stack<String>();
+			  
+			  
+            String[] parts = dividido.split(",");
+            for (int i=0; i<parts.length;i++) {
+            	
+            	stack.push(parts[i]);
+            	System.out.println(parts[i]);
+            }
+            
+          
+        	
+
+
+
+			
+			
+			
+			
+			
+			setLayout(new GridLayout(parts.length,0));
 			
 			
 			
 			
 
-			for (int row = 0; row < tamano; row++) {
+			for (int row = 0; row < parts.length; row++) {
 				if(row== 0) {
-					EnPila j = new EnPila(false, row,auxiliar.peek());
-					pilass.push(setpuntero(j));	
+					System.out.println("hay"+ stack.peek());
+					EnPila j = new EnPila(true, stack.peek());
+					setpuntero(j);	
 					//pilas.add(j);
-					add(pilass.peek());
+					add(j);
+					stack.pop();
 				}
 				
 			
 				else {
+					System.out.println("hay"+ stack.peek());
+			        EnPila j = new EnPila(false, stack.peek());
 					
-			        EnPila j = new EnPila(false, row,auxiliar.peek());
-					pilass.push(j);
-					add(pilass.peek());
+					add(j);
+					stack.pop();
 					
 					}
 					
@@ -60,12 +85,7 @@ public class EnPilas extends JPanel {
 
 		}
 		
-		public void pilachange() {
-			pilass.pop();
-			
-			
-		}
-		
+	
 		
 		
 		
@@ -73,7 +93,7 @@ public class EnPilas extends JPanel {
 		public EnPila setpuntero(EnPila enpila) {
 			
 			if(enpila.puntero==true) {
-				enpila = new EnPila(true, enpila.pos,enpila.text+" <-");
+				enpila = new EnPila(true,enpila.text+" <-");
 			}
 			//if (enpila.pos== pilas.size()-1) {
 				

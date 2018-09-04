@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Component;
 
 import java.awt.Dimension;
@@ -44,6 +45,10 @@ public class FNombre extends JFrame {
 
 	public FNombre(PDA pda) {
 		this.pda = pda;
+		
+		saveButton.setBackground(new Color(255,102,102));
+		saveButton.setContentAreaFilled(false);
+		saveButton.setOpaque(true);
 
 		Pila pila = new Pila();
 		pda.setPila(pila);
