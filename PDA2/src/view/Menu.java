@@ -3,6 +3,7 @@ package view;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Desktop;
 import java.awt.Dimension;
 
 import java.awt.Font;
@@ -14,6 +15,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.net.URL;
 
 import javax.swing.AbstractAction;
 import javax.swing.Box;
@@ -105,7 +107,11 @@ public class Menu extends JFrame {
 		instruccionesButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// menu no se cierra?
-				new FInstrucciones();
+				try{
+					Desktop.getDesktop().browse(new URL("https://youtu.be/oz0ZFogmg3k").toURI());
+				} catch(Exception e1) {
+					
+				}
 			}
 		});
 
