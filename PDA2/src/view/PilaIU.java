@@ -106,17 +106,19 @@ public class PilaIU extends JFrame {
 		preglas = new JPanel();
 		pestados = new JPanel();
 		dibujos=new JPanel();
+		dibujos.setPreferredSize(new Dimension(200, 200));
 		mensaje=new JPanel();
 		
 		preglas.setBackground(new Color(255,255,204));
 		pestados.setBackground(new Color(255,255,204));
-		dibujos.setBackground(new Color(255,255,204));
+		
 		preglas.setLayout(new GridLayout(pda.getReglas().length, 0));
 		pestados.setLayout(new GridLayout(pda.getEstados().length, 0));
 		//dibujos.setLayout(new GridLayout(1,1));
 
 		reglaestado = new JPanel();
 		reglaestado.setBackground(new Color(255,255,204));
+		
 
 		dibujopila = new JPanel(null);
 
@@ -128,11 +130,10 @@ public class PilaIU extends JFrame {
 
 		);
 
-		dibujopila.setPreferredSize(new Dimension(400, 400));
+		dibujopila.setPreferredSize(new Dimension(300, 300));
 
-		dibujopila.setPreferredSize(new Dimension(400, 400));
 
-		scrollPane.setBounds(30, 50, 200,200);
+		scrollPane.setBounds(0, 0, 300,300);
 
 		dibujopila.add(scrollPane);
 
@@ -240,11 +241,13 @@ public class PilaIU extends JFrame {
 				}
 				
 				
+				
 
 				dibujopila.remove(scrollPane);
-				
+				dibujopila.setPreferredSize(new Dimension(300, 300));
 				dibujos=new JPanel();
-				dibujos.setBackground(new Color(255,255,204));
+				
+				dibujos.setPreferredSize(new Dimension(300, 400));
 				dibujos.setLayout(new GridLayout(0,PDA.pilas.size()));
 				for (int i = 0; i < PDA.pilas.size(); i++) {
 					dibujos.add(new EnPilas(PDA.pilas.get(i).toString()));
@@ -261,9 +264,9 @@ public class PilaIU extends JFrame {
 				);
 
 
-				dibujopila.setPreferredSize(new Dimension(400, 400));
+				
 
-				scrollPane.setBounds(30, 50, 200,200);
+				scrollPane.setBounds(0, 0, 300,300);
 
 				dibujopila.add(scrollPane);
 
@@ -290,6 +293,7 @@ public class PilaIU extends JFrame {
 					
 					reglaestado = new JPanel();
 					reglaestado.setBackground(new Color(255,255,204));
+					
 					preglas = new JPanel();
 					preglas.setBackground(new Color(255,255,204));
 					pestados = new JPanel();
