@@ -229,7 +229,11 @@ public class PilaIU extends JFrame {
 				dibujos = new JPanel();
 
 				dibujos.setPreferredSize(new Dimension(300, 400));
+				try {
 				dibujos.setLayout(new GridLayout(0, PDA.pilas.size()));
+				} catch (Exception e1) {
+					rechazado.setVisible(true);
+				}
 				for (int i = 0; i < PDA.pilas.size(); i++) {
 					dibujos.add(new EnPilas(PDA.pilas.get(i).toString()));
 

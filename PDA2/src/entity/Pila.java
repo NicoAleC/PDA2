@@ -9,5 +9,13 @@ public class Pila extends Stack<String>{
 		super();
 		this.add("Z0");
 	}
+	
+	public boolean vacio() {
+		if(this.lastElement().equals("Z0")) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 }

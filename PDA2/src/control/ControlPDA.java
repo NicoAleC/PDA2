@@ -172,13 +172,14 @@ public class ControlPDA {
 					}
 				}
 			}
-			return false;
+			return pda.getPila().vacio();
 		}
 	
 	public void reiniciarPDA(PDA pda) {
 		for (int i = 0; i < pda.getEstados().length; i++) {
 			if(pda.getEstados()[i].isInicial()) {
 				pda.setActual(pda.getEstados()[i]);
+				pda.setPila(new Pila());
 			}
 		}
 	}
