@@ -143,6 +143,8 @@ public class FConjuntos extends JFrame {
 		        });
 		        t.setRepeats(false);
 		        t.start();
+		        einicial.setSelected(false);
+		        efinal.setSelected(false);
 		    }
 			
 		});

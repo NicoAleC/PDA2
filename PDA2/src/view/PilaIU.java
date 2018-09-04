@@ -150,7 +150,7 @@ public class PilaIU extends JFrame {
 
 		}
 
-		guardarButton.setEnabled(false);
+		guardarButton.setEnabled(true);
 		box = Box.createHorizontalBox();
 
 		box.add(Box.createHorizontalGlue());
