@@ -15,6 +15,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -39,9 +40,11 @@ public class FConjuntos extends JFrame {
 	public JTextField nombrepda;
 	private JCheckBox einicial = new JCheckBox();
 	private JCheckBox efinal = new JCheckBox();
-	private JButton saveButton = new JButton("Guardar");
-	private JButton addButton = new JButton("Añadir");
-	private JLabel titulo = new JLabel("Ingrese las reglas");
+	private JButton saveButton = new JButton("Siguiente >");
+	private JButton addButton = new JButton("Añadir +");
+	private JLabel titulo = new JLabel("INGRESE LOS ESTADOS");
+	JPanel verificador = new JPanel();
+	
 	public boolean eeinicial = false;
 	public boolean eefinal = false;
 	ControlPDA control = new ControlPDA();
@@ -49,11 +52,14 @@ public class FConjuntos extends JFrame {
 	Estado estado;
 	JLabel inicial = new JLabel("Es un Estado Inicial");
 	JLabel ffinal = new JLabel("Es un Estado Final");
+	private JLabel verificacion = new JLabel("Estado Añadido Correctamente");
+	ImageIcon in=new ImageIcon("resource\\check.png");
+	JLabel lin = new JLabel(in);
 
 	public FConjuntos(PDA pda) {
 		this.pda = pda;
-		
-		
+		lin.setVisible(false);
+		verificacion.setVisible(false);
 		saveButton.setBackground(new Color(255,102,102));
 		saveButton.setContentAreaFilled(false);
 		saveButton.setOpaque(true);
@@ -76,6 +82,7 @@ public class FConjuntos extends JFrame {
 		JPanel titulos = new JPanel();
 
 		JPanel mainBox = new JPanel();
+		mainBox.setPreferredSize(new Dimension(900, 200));
 		mainBox.setLayout(new BoxLayout(mainBox, BoxLayout.PAGE_AXIS));
 
 		saveButton.addActionListener(new ActionListener() {
@@ -119,8 +126,20 @@ public class FConjuntos extends JFrame {
 
 				System.out.println("soy estado" + estado.getEstado() + " Soy " + soy);
 				control.estados.add(estado);
+				lin.setVisible(true);
+				verificacion.setVisible(true);
+				Timer t = new Timer(500, new ActionListener() {
 
-			}
+		            @Override
+		            public void actionPerformed(ActionEvent e) {
+		            	lin.setVisible(false);
+						verificacion.setVisible(false);
+		            }
+		        });
+		        t.setRepeats(false);
+		        t.start();
+		    }
+			
 		});
 
 		conjunto.addMouseListener(new MouseAdapter() {
@@ -136,11 +155,18 @@ public class FConjuntos extends JFrame {
 		conjuntos.add(efinal);
 		conjuntos.add(addButton);
 		conjuntos.add(saveButton);
+		
+		verificador.add(lin);
+		verificador.add(verificacion);
 
 		titulos.add(titulo);
-
+		
 		mainBox.add(titulo);
 		mainBox.add(conjuntos);
+		mainBox.add(verificador);
+		
+
+		
 		getContentPane().add(mainBox);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

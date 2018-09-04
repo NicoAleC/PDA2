@@ -12,10 +12,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.Timer;
 
 import control.ControlPDA;
 import entity.Regla;
@@ -30,14 +34,26 @@ public class FReglas extends JFrame {
 	public Regla[] reglas;
 	private static final long serialVersionUID = 1L;
 	public JTextField reglatext;
-	private JButton saveButton = new JButton("Save");
+	private JButton saveButton = new JButton("Siguiente");
 	private JButton addButton = new JButton("Add");
 	private ControlPDA control = new ControlPDA();
 	private Estado estadoactual;
 	private Estado estadosiguiente;
 	private Regla regla;
+	private JLabel verificacion = new JLabel("Regla Añadida Correctamente");
+	private JLabel titulo = new JLabel("AÑADE LAS REGLAS");
+	ImageIcon in=new ImageIcon("resource\\check.png");
+	JPanel verificador = new JPanel();
+	JLabel lin = new JLabel(in);
+	JPanel titulos = new JPanel();
+	JPanel mainBox = new JPanel();
+	
 
 	public FReglas(PDA pda) {
+		mainBox.setPreferredSize(new Dimension(900, 200));
+		mainBox.setLayout(new BoxLayout(mainBox, BoxLayout.PAGE_AXIS));
+		lin.setVisible(false);
+		verificacion.setVisible(false);
 		JPanel reglas = new JPanel();
 		reglatext = new JTextField("Ingrese reglas");
 		reglatext.setFont(new Font("Serif", Font.BOLD, 20));
@@ -57,7 +73,7 @@ public class FReglas extends JFrame {
 
 				setVisible(false);
 				dispose();
-				new FPalabra(pda);
+				new PilaIU(pda);
 			}
 		});
 
@@ -122,6 +138,18 @@ public class FReglas extends JFrame {
 
 					control.reglas.add(regla);
 					saveButton.setEnabled(true);
+					lin.setVisible(true);
+					verificacion.setVisible(true);
+					Timer t = new Timer(500, new ActionListener() {
+
+			            @Override
+			            public void actionPerformed(ActionEvent e) {
+			            	lin.setVisible(false);
+							verificacion.setVisible(false);
+			            }
+			        });
+			        t.setRepeats(false);
+			        t.start();
 				} catch (Exception e2) {
 					reglatext.setText("vuelva a ingresar la regla");
 				}
@@ -131,7 +159,14 @@ public class FReglas extends JFrame {
 		reglas.add(reglatext);
 		reglas.add(addButton);
 		reglas.add(saveButton);
-		getContentPane().add(reglas);
+		verificador.add(verificacion);
+		verificador.add(lin);
+		titulos.add(titulo);
+		
+		mainBox.add(titulos);
+		mainBox.add(reglas);
+		mainBox.add(verificador);
+		getContentPane().add(mainBox);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pack();

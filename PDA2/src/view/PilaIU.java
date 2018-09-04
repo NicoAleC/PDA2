@@ -57,18 +57,24 @@ public class PilaIU extends JFrame {
 	private JButton guardarButton = new JButton("Guardar");
 	private JButton editButton = new JButton("Edit");
 	private JButton volverMenuButton = new JButton("Menu Principal");
+	private JLabel aceptado = new JLabel("La cadena es aceptada");
+	private JLabel rechazado = new JLabel("La cadena es rechazada");
 	
 	Box box;
 	String palabras;
 	JPanel dibujos;
 	JPanel titulo;
+	JPanel mensaje;
 	
 
 	public PilaIU(PDA pda) {
 
 		this.pda = pda;
 		
-
+		rechazado.setVisible(false);
+		aceptado.setVisible(false);
+		
+		
 		simularButton.setBackground(new Color(255,102,102));
 		simularButton.setContentAreaFilled(false);
 		simularButton.setOpaque(true);
@@ -100,6 +106,7 @@ public class PilaIU extends JFrame {
 		preglas = new JPanel();
 		pestados = new JPanel();
 		dibujos=new JPanel();
+		mensaje=new JPanel();
 		
 		preglas.setBackground(new Color(255,255,204));
 		pestados.setBackground(new Color(255,255,204));
@@ -171,6 +178,8 @@ public class PilaIU extends JFrame {
 		box1.add(Box.createVerticalStrut(20));
 		box1.add(palabra);
 		box1.add(Box.createVerticalGlue());
+		box1.add(aceptado);
+		box1.add(rechazado);
 		box.add(box1);
 		box.add(Box.createHorizontalStrut(20));
 
@@ -195,25 +204,39 @@ public class PilaIU extends JFrame {
 		simularButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				
+				aceptado.setVisible(false);
+				rechazado.setVisible(false);
 
 				ControlPDA con = new ControlPDA();
 				con.reiniciarPDA(pda);
 				PDA.pilas.clear();
-				System.out.println("recursividad:");
+
 				boolean tieneFinal = false;
 				for (int i = 0; i < pda.getEstados().length; i++) {
 					if(pda.getEstados()[i].isAcept()) {
 						tieneFinal = true;
 					}
 				}
-				System.out.println("final: " + tieneFinal + "\n" + con.simularAutomata(pda, palabra.getText(), tieneFinal));
-				for (int j = 0; j <PDA.pilas.size(); j++) {
-					System.out.println(PDA.pilas.get(j).toString());
+				if (tieneFinal) {
+					if(con.simularAutomataF(pda, palabra.getText())) {
+						aceptado.setVisible(true);
+					}
+					else
+					{
+						rechazado.setVisible(true);
+					}
+		
 				}
-				
-				
-				
+				else
+				{
+					if(con.simularAutomataP(pda, palabra.getText())) {
+						aceptado.setVisible(true);
+					}
+					else
+					{
+						rechazado.setVisible(true);
+					}
+				}
 				
 				
 
@@ -363,10 +386,7 @@ public class PilaIU extends JFrame {
 						public void actionPerformed(ActionEvent e) {
 							editButton.setEnabled(true);
 							guardarButton.setEnabled(false);
-							
-					
-					System.out.println("trato de guardar");
-					//editButton.setText("Edit");
+
 					remove(reglaestado);
 					
 					reglaestado = new JPanel();

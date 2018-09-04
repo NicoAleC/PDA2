@@ -82,9 +82,9 @@ public class Menu extends JFrame {
 		menu.setPreferredSize(new Dimension(400, 200));
 		
 	
-		ImageIcon in=new ImageIcon("C:\\Users\\usuario\\git\\PDA2\\PDA2\\bin\\new-icon1.png"); 
-		ImageIcon io=new ImageIcon("C:\\Users\\usuario\\git\\PDA2\\PDA2\\bin\\old1.png"); 
-		ImageIcon ii=new ImageIcon("C:\\Users\\usuario\\git\\PDA2\\PDA2\\bin\\ins1.png"); 
+		ImageIcon in=new ImageIcon("resource\\new-icon1.png"); 
+		ImageIcon io=new ImageIcon("resource\\old1.png"); 
+		ImageIcon ii=new ImageIcon("resource\\ins1.png"); 
         
         JLabel lnew =new JLabel(in); 
         JLabel lold =new JLabel(io); 
