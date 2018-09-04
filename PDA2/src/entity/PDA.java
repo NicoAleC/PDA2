@@ -1,6 +1,8 @@
 package entity;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Stack;
 
 public class PDA {
 	
@@ -12,6 +14,7 @@ public class PDA {
 	private Estado[] estados;
 	private Pila pila;
 	private Regla[] reglas;
+	public static ArrayList<String> pilas = new ArrayList<>();
 
 	public PDA() {
 		this.nombre = "";

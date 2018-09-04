@@ -1,6 +1,7 @@
 package control;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 import entity.*;
 
@@ -8,6 +9,7 @@ public class ControlPDA {
 	
 	public ArrayList<Estado> estados;
 	public ArrayList<Regla> reglas;
+	public static ArrayList<String> pilas; 
 	
 	public ControlPDA() {
 		estados = new ArrayList<Estado>();
@@ -43,53 +45,68 @@ public class ControlPDA {
 		
 		//pda.setReglas((Regla[]) reglas.toArray());
 	}
-	public boolean simularAutomata(PDA pda,String letra) {
-		if (letra.length() == 0) {
-			if(pda.getPila().lastElement() == "Z0" || pda.getActual().isAcept()) {
+	public boolean simularAutomata(PDA pda, String letra, boolean tieneFinal) {
+		String a;
+		String nuevaentrada;
+				
+		/*if (letra.length() == 0 && tieneFinal) {
+			System.out.println("TIENE final y esta acabado coñio");
+			System.out.println("HABER Si el estado actual de mi automata es joder tio yo flipo "+pda.getActual().getEstado());
+			if(pda.getActual().isAcept()) {
+				System.out.println("es aceptado y me bota true joder macho");
 				return true;
 			}
 			else
 			{
+				System.out.println("no es aceptado fua chaval ;'(");
+				return false;
+			}
+			
+		} else*/ if(letra.length() == 0){
+			if(pda.getPila().lastElement().equals("Z0")) {
+				return true;
+			} else {
 				return false;
 			}
 		}
-			String a;
-			String newent;
+			
 			
 			System.out.println("Tamaño de las reglas: "+pda.getReglas().length);
 			for (int i = 0; i < pda.getReglas().length; i++) {
 				String estadoinicial = pda.getReglas()[i].getEstadoActual().getEstado();
 				String entrada = pda.getReglas()[i].getLectura();
 				String topedelapila = pda.getReglas()[i].getPila();
+				//pda.getPila().lastElement() == "Z0" ||
 				if (pda.getActual().getEstado().equals(estadoinicial)) {
 					if (entrada.equals("-")){
 						System.out.println("Entre al if para cuando la cadena es epsilon csmr");
 						a = "-";
-						newent = letra;
+						nuevaentrada=letra;
+						//nuevaentrada = letra.substring(1);
 					} else {
 						a = String.valueOf(letra.charAt(0));
-						newent = letra.substring(1);
+						nuevaentrada = letra.substring(1);
 						System.out.println("El valor para mi caracter a es: "+a);
-						System.out.println("Mi nueva entrada es: "+newent);
+						System.out.println("estoy evaluando la regla"+pda.getReglas()[i].toString());
+						System.out.println("Mi nueva entrada es: "+nuevaentrada);
 					}
 					if (entrada.equals(a)) {
-						System.out.println("Mi entrada coincidio y por eso entro");
-						System.out.println("El tope de mi pila es"+ (pda.getPila().elementAt((pda.getPila().size()-1))));
-						if (topedelapila == pda.getPila().elementAt((pda.getPila().size()-1))) {
+						if (topedelapila.equals(pda.getPila().elementAt((pda.getPila().size()-1)))) {
 							System.out.println("entro al if porque el tope de la pila y mi regla coinciden");
 							pda.setActual(pda.getReglas()[i].getEstadoSiguiente());
 							System.out.println("Mi nuevo estado final es: "+pda.getActual().getEstado());
 							agregarPila(pda, i);
+							PDA.pilas.add(pda.getPila().toString());
 							System.out.println("la instruccion que le estoy enviando a la pila es: "+pda.getReglas()[i].getOrden());
 							System.out.println("En la puta pila hay: "+pda.getPila().toString());
-							if (simularAutomata(pda, newent))return true;
+							System.out.println("------------------------------");
+							if (simularAutomata(pda, nuevaentrada, tieneFinal))return true;
 						}
 					}
 				}
 			}
 			return false;
 		}
-
 	
 	public void reiniciarPDA(PDA pda) {
 		pda.setLectura("");

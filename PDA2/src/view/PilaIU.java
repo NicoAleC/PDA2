@@ -44,6 +44,7 @@ public class PilaIU extends JFrame {
 	protected JTextArea textArea2;
 	JTextField[][] treglas;
 	JTextField[][] testados;
+	JTextField palabra;
 	JLabel[] lreglas;
 	JLabel[] lestados;
 	LeerEscribirPDA c = new LeerEscribirPDA();
@@ -56,13 +57,15 @@ public class PilaIU extends JFrame {
 	private JButton volverMenuButton = new JButton("Menu Principal");
 	
 	Box box;
-	String palabras;
 	
 
-	public PilaIU(PDA pda, String palabras) {
+	public PilaIU(PDA pda) {
 
 		this.pda = pda;
-		this.palabras=palabras;
+
+	    palabra = new JTextField("Inserte Palabra");
+		palabra.setFont(new Font("Serif", Font.BOLD, 20));
+	    palabra.setPreferredSize(new Dimension(300, 50));
 		
 		
 		preglas = new JPanel();
@@ -129,6 +132,7 @@ public class PilaIU extends JFrame {
 		box1.add(Box.createVerticalStrut(20));
 		box1.add(volverMenuButton);
 		box1.add(Box.createVerticalGlue());
+		box1.add(palabra);
 		box.add(box1);
 		box.add(Box.createHorizontalStrut(20));
 
@@ -149,16 +153,24 @@ public class PilaIU extends JFrame {
 		setVisible(true);
 		simularButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("simular apretado: " + palabras);
 				
 				
 				ControlPDA con = new ControlPDA();
+				con.reiniciarPDA(pda);
+				PDA.pilas.clear();
 				System.out.println("recursividad:");
-				System.out.println(con.simularAutomata(pda, palabras));
-
+				boolean tieneFinal = false;
+				for (int i = 0; i < pda.getEstados().length; i++) {
+					if(pda.getEstados()[i].isAcept()) {
+						tieneFinal = true;
+					}
+				}
+				System.out.println("final: " + tieneFinal + "\n" + con.simularAutomata(pda, palabra.getText(), tieneFinal));
+				for (int j = 0; j <PDA.pilas.size(); j++) {
+					System.out.println(PDA.pilas.get(j).toString());
+				}
 				// deberia dibujar!
 				pilafunc = new EnPilas(pda.getPila());
-
 				dibujopila.remove(scrollPane);
 				scrollPane = new JScrollPane(pilafunc,
 

@@ -9,9 +9,12 @@ import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -23,17 +26,20 @@ import entity.Pila;
 public class FAntiguo extends JFrame {
 
 	String nombre;
-
+	private JLabel titulo = new JLabel("Seleccione el automata a recuperar");
 	private JComboBox<String> buscar;
-	private JButton buscarButton = new JButton("Buscar");
+	private JButton buscarButton = new JButton("Seleccionar");
 
 	public FAntiguo() {
-
-		System.out.println("entre");
+		this.setTitle("Escoger un PDA");
 		JPanel antiguos = new JPanel();
+		JPanel buscarpanel = new JPanel();
+		JPanel botones = new JPanel();
+		antiguos.setPreferredSize(new Dimension(300, 100));
+		antiguos.setLayout(new BoxLayout(antiguos, BoxLayout.PAGE_AXIS));
 		buscar = new JComboBox<String>();
-		buscar.setFont(new Font("Serif", Font.BOLD, 20));
-		buscar.setPreferredSize(new Dimension(300, 50));
+		buscar.setFont(new Font("Serif", Font.BOLD, 30));
+		buscar.setPreferredSize(new Dimension(275, 50));
 		LeerEscribirPDA c = new LeerEscribirPDA();
 		String[] aux = c.listarPDA();
 		for (int i = 0; i < aux.length; i++) {
@@ -56,7 +62,7 @@ public class FAntiguo extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				PDA nuevo = c.leerPDA(nombre);
-				new FPalabra(nuevo);
+				new PilaIU(nuevo);
 
 				// timer.start();
 
@@ -72,10 +78,11 @@ public class FAntiguo extends JFrame {
 				//buscar.setText("");
 
 			}
-		});
-
-		antiguos.add(buscar);
-		antiguos.add(buscarButton);
+		});		
+		buscarpanel.add(buscar);
+		botones.add(buscarButton);
+		antiguos.add(buscarpanel);
+		antiguos.add(botones);
 
 		getContentPane().add(antiguos);
 

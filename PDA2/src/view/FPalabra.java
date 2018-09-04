@@ -72,7 +72,7 @@ public class FPalabra extends JFrame {
 	        	  
 	        	  setVisible(false); 
 	        	  dispose();
-	        	  new PilaIU(pda,palabras);
+	        	  new PilaIU(pda);
 	          }
 	       });
 	    
