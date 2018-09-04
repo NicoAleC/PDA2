@@ -45,7 +45,7 @@ public class Menu extends JFrame {
 	private JButton instruccionesButton = new JButton("Instrucciones");
 
 	ControlPDA control = new ControlPDA();
-	PDA pda;
+    PDA pda;
 	Estado estado;
 
 	public Menu() {

@@ -36,40 +36,40 @@ public class PilaIU extends JFrame {
 
 	EnPilas pilafunc;
 
-	JPanel dibujopila;
-	JScrollPane scrollPane;
-	JPanel reglaestado;
-	PDA pda;
-	JPanel preglas;
-	JPanel pestados;
-	protected JTextArea textArea;
-	protected JTextArea textArea2;
-	JTextField[][] treglas;
-	JTextField[][] testados;
-	JTextField palabra;
-	JLabel[] lreglas;
-	JLabel[] lestados;
+	private JPanel dibujopila;
+	private JScrollPane scrollPane;
+	private JPanel reglaestado;
+	private PDA pda;
+	private JPanel preglas;
+	private JPanel pestados;
+	
+	private JTextField[][] treglas;
+	private JTextField[][] testados;
+	private JTextField palabra;
+	private JLabel[] lreglas;
+	private JLabel[] lestados;
 	LeerEscribirPDA c = new LeerEscribirPDA();
 	private static final long serialVersionUID = 1L;
 	public JTextField conjunto;
 
-	private JButton simularButton = new JButton("Simular");
-	private JButton guardarButton = new JButton("Guardar");
-	private JButton editButton = new JButton("Edit");
-	private JButton volverMenuButton = new JButton("Menu Principal");
-	private JLabel aceptado = new JLabel("La cadena es aceptada");
-	private JLabel rechazado = new JLabel("La cadena es rechazada");
+
 	
-	Box box;
-	String palabras;
-	JPanel dibujos;
-	JPanel titulo;
-	JPanel mensaje;
+	private Box box;
+	private String palabras;
+	private JPanel dibujos;
+	private JPanel titulo;
+	private JPanel mensaje;
 	
 
 	public PilaIU(PDA pda) {
 
 		this.pda = pda;
+		JButton simularButton = new JButton("Simular");
+		JButton guardarButton = new JButton("Guardar");
+		JButton editButton = new JButton("Edit");
+		JButton volverMenuButton = new JButton("Menu Principal");
+		JLabel aceptado = new JLabel("La cadena es aceptada");
+		JLabel rechazado = new JLabel("La cadena es rechazada");
 		
 		rechazado.setVisible(false);
 		aceptado.setVisible(false);
@@ -129,9 +129,10 @@ public class PilaIU extends JFrame {
 		);
 
 		dibujopila.setPreferredSize(new Dimension(400, 400));
-		dibujopila.setBackground(new Color(255,255,204));
 
-		scrollPane.setBounds(30, 50, 300, 300);
+		dibujopila.setPreferredSize(new Dimension(400, 400));
+
+		scrollPane.setBounds(30, 50, 200,200);
 
 		dibujopila.add(scrollPane);
 
@@ -259,9 +260,10 @@ public class PilaIU extends JFrame {
 
 				);
 
+
 				dibujopila.setPreferredSize(new Dimension(400, 400));
 
-				scrollPane.setBounds(30, 50, 100,100);
+				scrollPane.setBounds(30, 50, 200,200);
 
 				dibujopila.add(scrollPane);
 
@@ -359,7 +361,11 @@ public class PilaIU extends JFrame {
 					box1.add(guardarButton);
 					box1.add(Box.createVerticalStrut(20));
 					box1.add(volverMenuButton);
+					box1.add(Box.createVerticalStrut(20));
+					box1.add(palabra);
 					box1.add(Box.createVerticalGlue());
+					box1.add(aceptado);
+					box1.add(rechazado);
 					box.add(box1);
 					box.add(Box.createHorizontalStrut(20));
 
@@ -530,14 +536,17 @@ public class PilaIU extends JFrame {
 					box1.add(guardarButton);
 					box1.add(Box.createVerticalStrut(20));
 					box1.add(volverMenuButton);
+					box1.add(Box.createVerticalStrut(20));
+					box1.add(palabra);
 					box1.add(Box.createVerticalGlue());
+					box1.add(aceptado);
+					box1.add(rechazado);
 					box.add(box1);
 					box.add(Box.createHorizontalStrut(20));
 
 					box.add(pestados);
 
 					box.add(Box.createHorizontalGlue());
-
 					reglaestado.setLayout(new BoxLayout(reglaestado, BoxLayout.Y_AXIS));
 
 					reglaestado.add(box);

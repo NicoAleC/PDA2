@@ -28,12 +28,13 @@ import entity.Pila;
 public class FAntiguo extends JFrame {
 
 	private String nombre;
-	private JComboBox<String> buscar;
-	private JButton buscarButton = new JButton("Seleccionar");
+
 
 	public FAntiguo() {
 		this.nombre = "";
 		this.setTitle("Escoger un PDA");
+		JComboBox<String> buscar;
+		JButton buscarButton = new JButton("Seleccionar");
 		
 		buscarButton.setBackground(new Color(0,153,0));
 		buscarButton.setContentAreaFilled(false);

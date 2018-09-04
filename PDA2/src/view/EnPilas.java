@@ -14,8 +14,8 @@ import entity.Regla;
 public class EnPilas extends JPanel {
 
 
-	String pilass;
-	Stack<String> stack;
+	private String pilass;
+	private Stack<String> stack;
 	
 	
 
@@ -52,17 +52,17 @@ public class EnPilas extends JPanel {
 			for (int row = 0; row < parts.length; row++) {
 				if(row== 0) {
 					System.out.println("hay"+ stack.peek());
-					EnPila j = new EnPila(true, stack.peek());
-					setpuntero(j);	
+					EnPila j = new EnPila(stack.peek());
+					
 					//pilas.add(j);
-					add(j);
+					add(setpuntero(j));
 					stack.pop();
 				}
 				
 			
 				else {
 					System.out.println("hay"+ stack.peek());
-			        EnPila j = new EnPila(false, stack.peek());
+			        EnPila j = new EnPila(stack.peek());
 					
 					add(j);
 					stack.pop();
@@ -92,9 +92,9 @@ public class EnPilas extends JPanel {
 		
 		public EnPila setpuntero(EnPila enpila) {
 			
-			if(enpila.puntero==true) {
-				enpila = new EnPila(true,enpila.text+" <-");
-			}
+			
+				enpila = new EnPila(enpila.text+" <-");
+			
 			//if (enpila.pos== pilas.size()-1) {
 				
 				return enpila;

@@ -36,6 +36,10 @@ public class FConjuntos extends JFrame {
 	 */
 
 	private static final long serialVersionUID = 1L;
+	
+	
+	
+	
 	public JTextField conjunto;
 	public JTextField nombrepda;
 	private JCheckBox einicial = new JCheckBox();
@@ -43,21 +47,23 @@ public class FConjuntos extends JFrame {
 	private JButton saveButton = new JButton("Siguiente >");
 	private JButton addButton = new JButton("Añadir +");
 	private JLabel titulo = new JLabel("INGRESE LOS ESTADOS");
-	JPanel verificador = new JPanel();
+	private JPanel verificador = new JPanel();
 	
 	public boolean eeinicial = false;
 	public boolean eefinal = false;
 	ControlPDA control = new ControlPDA();
-	PDA pda;
-	Estado estado;
-	JLabel inicial = new JLabel("Es un Estado Inicial");
-	JLabel ffinal = new JLabel("Es un Estado Final");
-	private JLabel verificacion = new JLabel("Estado Añadido Correctamente");
+	private PDA pda;
+	private Estado estado;
+	
+	
 	ImageIcon in=new ImageIcon("resource\\check.png");
 	JLabel lin = new JLabel(in);
 
 	public FConjuntos(PDA pda) {
 		this.pda = pda;
+		JLabel inicial = new JLabel("Es un Estado Inicial");
+		JLabel ffinal = new JLabel("Es un Estado Final");
+		JLabel verificacion = new JLabel("Estado Añadido Correctamente");
 		lin.setVisible(false);
 		verificacion.setVisible(false);
 		saveButton.setBackground(new Color(255,102,102));

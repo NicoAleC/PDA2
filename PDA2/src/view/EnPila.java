@@ -7,12 +7,12 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 public class EnPila extends JPanel {
-		boolean puntero=false;
 		
-		String text;
+		
+		public String text;
 
-		public EnPila(boolean  puntero, String text) {
-			this.puntero=puntero;
+		public EnPila(String text) {
+			
 			
 			this.text=text;
 			JLabel label= new JLabel (text);
