@@ -9,6 +9,8 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -57,27 +59,61 @@ public class PilaIU extends JFrame {
 	private JButton volverMenuButton = new JButton("Menu Principal");
 	
 	Box box;
+	String palabras;
+	JPanel dibujos;
+	JPanel titulo;
 	
 
 	public PilaIU(PDA pda) {
 
 		this.pda = pda;
+		
+
+		simularButton.setBackground(new Color(255,102,102));
+		simularButton.setContentAreaFilled(false);
+		simularButton.setOpaque(true);
+		
+
+		guardarButton.setBackground(new Color(255,102,102));
+		guardarButton.setContentAreaFilled(false);
+		guardarButton.setOpaque(true);
+		
+
+		editButton .setBackground(new Color(255,102,102));
+		editButton .setContentAreaFilled(false);
+		editButton .setOpaque(true);
+		
+
+		volverMenuButton.setBackground(new Color(255,102,102));
+		volverMenuButton.setContentAreaFilled(false);
+		volverMenuButton.setOpaque(true);
+		
+		titulo=new JPanel();
+		titulo.setBackground(new Color(255,255,204));
+		JLabel label1 = new JLabel("SIMULADOR");
 
 	    palabra = new JTextField("Inserte Palabra");
 		palabra.setFont(new Font("Serif", Font.BOLD, 20));
-	    palabra.setPreferredSize(new Dimension(300, 50));
+	    palabra.setPreferredSize(new Dimension(100, 50));
 		
 		
 		preglas = new JPanel();
 		pestados = new JPanel();
+		dibujos=new JPanel();
+		
+		preglas.setBackground(new Color(255,255,204));
+		pestados.setBackground(new Color(255,255,204));
+		dibujos.setBackground(new Color(255,255,204));
 		preglas.setLayout(new GridLayout(pda.getReglas().length, 0));
 		pestados.setLayout(new GridLayout(pda.getEstados().length, 0));
+		//dibujos.setLayout(new GridLayout(1,1));
 
 		reglaestado = new JPanel();
+		reglaestado.setBackground(new Color(255,255,204));
 
 		dibujopila = new JPanel(null);
 
-		scrollPane = new JScrollPane(pilafunc,
+		scrollPane = new JScrollPane(dibujos,
 
 				JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 
@@ -86,6 +122,7 @@ public class PilaIU extends JFrame {
 		);
 
 		dibujopila.setPreferredSize(new Dimension(400, 400));
+		dibujopila.setBackground(new Color(255,255,204));
 
 		scrollPane.setBounds(30, 50, 300, 300);
 
@@ -131,8 +168,9 @@ public class PilaIU extends JFrame {
 		box1.add(guardarButton);
 		box1.add(Box.createVerticalStrut(20));
 		box1.add(volverMenuButton);
-		box1.add(Box.createVerticalGlue());
+		box1.add(Box.createVerticalStrut(20));
 		box1.add(palabra);
+		box1.add(Box.createVerticalGlue());
 		box.add(box1);
 		box.add(Box.createHorizontalStrut(20));
 
@@ -143,8 +181,11 @@ public class PilaIU extends JFrame {
 		reglaestado.setLayout(new BoxLayout(reglaestado, BoxLayout.Y_AXIS));
 
 		reglaestado.add(box);
+		titulo.add(label1);
 
-		add(reglaestado, BorderLayout.NORTH);
+		
+		add(titulo, BorderLayout.NORTH);
+		add(reglaestado, BorderLayout.CENTER);
 		add(dibujopila, BorderLayout.SOUTH);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -155,6 +196,7 @@ public class PilaIU extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				
+
 				ControlPDA con = new ControlPDA();
 				con.reiniciarPDA(pda);
 				PDA.pilas.clear();
@@ -169,10 +211,24 @@ public class PilaIU extends JFrame {
 				for (int j = 0; j <PDA.pilas.size(); j++) {
 					System.out.println(PDA.pilas.get(j).toString());
 				}
-				// deberia dibujar!
-				pilafunc = new EnPilas(pda.getPila());
+				
+				
+				
+				
+				
+
 				dibujopila.remove(scrollPane);
-				scrollPane = new JScrollPane(pilafunc,
+				
+				dibujos=new JPanel();
+				dibujos.setBackground(new Color(255,255,204));
+				dibujos.setLayout(new GridLayout(0,PDA.pilas.size()));
+				for (int i = 0; i < PDA.pilas.size(); i++) {
+					dibujos.add(new EnPilas(PDA.pilas.get(i).toString()));
+
+				}
+				
+				
+				scrollPane = new JScrollPane(dibujos,
 
 						JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 
@@ -182,7 +238,7 @@ public class PilaIU extends JFrame {
 
 				dibujopila.setPreferredSize(new Dimension(400, 400));
 
-				scrollPane.setBounds(30, 50, 300, 300);
+				scrollPane.setBounds(30, 50, 100,100);
 
 				dibujopila.add(scrollPane);
 
@@ -205,9 +261,14 @@ public class PilaIU extends JFrame {
 					c.borrarPDA(pda.getNombre());
 
 					remove(reglaestado);
+					
+					
 					reglaestado = new JPanel();
+					reglaestado.setBackground(new Color(255,255,204));
 					preglas = new JPanel();
+					preglas.setBackground(new Color(255,255,204));
 					pestados = new JPanel();
+					pestados.setBackground(new Color(255,255,204));
 					preglas.setLayout(new GridLayout(pda.getReglas().length, 6));
 					pestados.setLayout(new GridLayout(pda.getEstados().length, 3));
 					
@@ -287,7 +348,7 @@ public class PilaIU extends JFrame {
 
 					reglaestado.add(box);
 
-					add(reglaestado, BorderLayout.NORTH);
+					add(reglaestado, BorderLayout.CENTER);
 
 					revalidate();
 
@@ -309,9 +370,11 @@ public class PilaIU extends JFrame {
 					remove(reglaestado);
 					
 					reglaestado = new JPanel();
-					
+					reglaestado.setBackground(new Color(255,255,204));
 					preglas = new JPanel();
+					preglas.setBackground(new Color(255,255,204));
 					pestados = new JPanel();
+					pestados.setBackground(new Color(255,255,204));
 					preglas.setLayout(new GridLayout(pda.getReglas().length, 0));
 					pestados.setLayout(new GridLayout(pda.getEstados().length, 0));
 					
@@ -479,6 +542,13 @@ public class PilaIU extends JFrame {
 							new Menu();
 						}
 					});
+					
+					palabra.addMouseListener(new MouseAdapter() {
+						 
+						  @Override public void mouseClicked(MouseEvent e) { 
+							  palabra.setText("");
+						  } });
+						 
 
 	}
 
