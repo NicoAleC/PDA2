@@ -72,20 +72,23 @@ public class FConjuntos extends JFrame {
 		conjunto = new JTextField("");
 		conjunto.setFont(new Font("Serif", Font.BOLD, 20));
 		conjunto.setPreferredSize(new Dimension(300, 50));
-		
+
 		JPanel titulos = new JPanel();
-		
+
 		JPanel mainBox = new JPanel();
 		mainBox.setLayout(new BoxLayout(mainBox, BoxLayout.PAGE_AXIS));
 
 		saveButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				control.crearEstados(pda);
-				// timer.start();
-				new FReglas(pda);
-				setVisible(false);
-				dispose();
-
+				if (!control.estados.isEmpty()) {
+					control.crearEstados(pda);
+					// timer.start();
+					new FReglas(pda);
+					setVisible(false);
+					dispose();
+				} else {
+					conjunto.setText("ingresar un estado");
+				}
 			}
 		});
 
@@ -135,7 +138,7 @@ public class FConjuntos extends JFrame {
 		conjuntos.add(saveButton);
 
 		titulos.add(titulo);
-		
+
 		mainBox.add(titulo);
 		mainBox.add(conjuntos);
 		getContentPane().add(mainBox);
